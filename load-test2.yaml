@@ -1,0 +1,22 @@
+config:
+  target: 'http://localhost:3000/'  # Cambia esto a la URL de tu API
+  phases:
+    - duration: 60
+      arrivalRate: 10  # Usuarios por segundo
+
+scenarios:
+  - name: Prueba de Registro de Usuarios
+    flow:
+      - post:
+          url: "/users/register"
+          json:
+            username: "usuario_{{ $randomInt(1, 100000) }}"
+            password: "contraseña123"
+            
+  - name: Prueba de Inicio de Sesión de Usuarios
+    flow:
+      - post:
+          url: "/users/login"
+          json:
+            username: "luiss"
+            password: "123"

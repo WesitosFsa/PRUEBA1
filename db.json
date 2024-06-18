@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "759d02c8-b1ad-4309-8cfb-47766d5f9932",
+      "password": "$2b$10$dZGP0seDvFi1abWm8TfWWuHFiwSXz/ctPJe7oidxU238/CwkFkxKG",
+      "username": "wesos"
+    },
+    {
+      "id": "48f264ad-459b-43f6-ad37-3445ea8b1992",
+      "password": "$2b$10$hA/AXvYnW/5Wjb0o9h8AuOvIUhverzvtDuuFt383JCpbE4Xsynn.a",
+      "username": "kairos"
+    }
+  ],
+  "preguntas": [
+    {
+      "id": "2c894a90-1dc2-482a-b731-d755dbc378d8",
+      "userId": "759d02c8-b1ad-4309-8cfb-47766d5f9932",
+      "buenas": "tardes",
+      "asdasd": "asdasd",
+      "imagen": "https://res.cloudinary.com/dlidac3hc/image/upload/v1718510503/Preguntas/oykeso5mvb0sjaq5befp.jpg",
+      "public_id_imagen": "Preguntas/oykeso5mvb0sjaq5befp"
+    },
+    {
+      "id": "1",
+      "userId": "759d02c8-b1ad-4309-8cfb-47766d5f9932",
+      "buenas": "tardes",
+      "asdasd": "asdasd",
+      "imagen": "https://res.cloudinary.com/dlidac3hc/image/upload/v1718510503/Preguntas/oykeso5mvb0sjaq5befp.jpg",
+      "public_id_imagen": "Preguntas/oykeso5mvb0sjaq5befp"
+    }
+  ]
+}

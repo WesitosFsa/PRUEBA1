@@ -1,0 +1,71 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+
+scenarios:
+  - name: "Crear una nueva pregunta"
+    flow:
+      - post:
+          url: "/api/v1/preguntas"
+          json:
+            name: "Pregunta {{ $randomInt(1, 1000) }}"
+            description: "Descripción de la pregunta"
+            imageUrl: "https://res.cloudinary.com/dlidac3hc/image/upload/v1718513201/Preguntas/gsvcicjzmeeofgwgiwmu.webp"  # URL fija de la imagen
+          headers:
+            Authorization: "Bearer {{ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5MTc2NDIyLTM2MDQtNGQ1Ny1iMjcyLTY3NzZiMDM2OTg1ZCIsInBhc3N3b3JkIjoiJDJiJDEwJEdjZGhwOHIwRkxHSnpBZkIyU0syVU9aYWpFNkdFR3RCRi9UYU1lbGdZdlk2OC51MUtpcVhHIiwidXNlcm5hbWUiOiJsdWlzcyIsImlhdCI6MTcxODU5ODI0NSwiZXhwIjoxNzE4NjAxODQ1fQ.3EwZM83Cz5uKEGBeBATUcV598pq8imrZwYfKNawhj04 }}"
+          expect:
+            - statusCode: 201
+
+  - name: "Actualizar una pregunta existente"
+    flow:
+      - get:
+          url: "/api/v1/preguntas"
+          expect:
+            - statusCode: 200
+          capture:
+            json: "$[0].id"
+            as: Id
+
+      - put:
+          url: "/api/v1/preguntas/{{ id }}"
+          json:
+            name: "Pregunta Actualizada {{ $randomInt(1, 1000) }}"
+            description: "Descripción actualizada"
+            imagenUrl: "https://res.cloudinary.com/dlidac3hc/image/upload/v1718513176/Preguntas/u7dkzswfy9jijsyhdarz.jpg"
+          headers:
+            Authorization: "Bearer {{ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5MTc2NDIyLTM2MDQtNGQ1Ny1iMjcyLTY3NzZiMDM2OTg1ZCIsInBhc3N3b3JkIjoiJDJiJDEwJEdjZGhwOHIwRkxHSnpBZkIyU0syVU9aYWpFNkdFR3RCRi9UYU1lbGdZdlk2OC51MUtpcVhHIiwidXNlcm5hbWUiOiJsdWlzcyIsImlhdCI6MTcxODU5ODI0NSwiZXhwIjoxNzE4NjAxODQ1fQ.3EwZM83Cz5uKEGBeBATUcV598pq8imrZwYfKNawhj04 }}"
+          expect:
+            - statusCode: 200
+
+  - name: "Eliminar una pregunta"
+    flow:
+      - get:
+          url: "/api/v1/preguntas"
+          expect:
+            - statusCode: 200
+          capture:
+            json: "$[0].id"
+            as: Id
+
+      - delete:
+          url: "/api/v1/preguntas/{{ id }}"
+          headers:
+            Authorization: "Bearer {{ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk5MTc2NDIyLTM2MDQtNGQ1Ny1iMjcyLTY3NzZiMDM2OTg1ZCIsInBhc3N3b3JkIjoiJDJiJDEwJEdjZGhwOHIwRkxHSnpBZkIyU0syVU9aYWpFNkdFR3RCRi9UYU1lbGdZdlk2OC51MUtpcVhHIiwidXNlcm5hbWUiOiJsdWlzcyIsImlhdCI6MTcxODU5ODI0NSwiZXhwIjoxNzE4NjAxODQ1fQ.3EwZM83Cz5uKEGBeBATUcV598pq8imrZwYfKNawhj04 }}"
+          expect:
+            - statusCode: 200
+
+  - name: "Obtener todas las preguntas"
+    flow:
+      - get:
+          url: "/api/v1/preguntas"
+          expect:
+            - statusCode: 200
+  - name: "Obtener una pregunta"
+    flow:
+      - get:
+          url: "/api/v1/preguntas/{{ id }}"
+          expect:
+            - statusCode: 200
+
