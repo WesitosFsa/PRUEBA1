@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
-    "bdd": "json-server --watch db.json",
+    "bdd": "json-server --watch db.json --port=4000",
     "test": "mocha --require esm --recursive"
   },
   "keywords": [],
